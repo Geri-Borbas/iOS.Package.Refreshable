@@ -11,13 +11,13 @@ import Introspect
 
 extension UIScrollView {
 	
-	private struct Keys {
+	struct Keys {
 		static var onValueChanged: UInt8 = 0
 	}
 	
-	typealias ValueChangedAction = ((_ refreshControl: UIRefreshControl) -> Void)
+	public typealias ValueChangedAction = ((_ refreshControl: UIRefreshControl) -> Void)
 	
-	private var onValueChanged: ValueChangedAction? {
+	var onValueChanged: ValueChangedAction? {
 		get {
 			objc_getAssociatedObject(self, &Keys.onValueChanged) as? ValueChangedAction
 		}
@@ -39,7 +39,7 @@ extension UIScrollView {
 		self.onValueChanged = onValueChanged
 	}
 	
-	@objc private func onValueChangedAction(sender: UIRefreshControl) {
+	@objc func onValueChangedAction(sender: UIRefreshControl) {
 		self.onValueChanged?(sender)
 	}
 }
@@ -58,7 +58,7 @@ struct OnListRefreshModifier: ViewModifier {
 }
 
 
-extension View {
+public extension View {
 	
 	func onRefresh(onValueChanged: @escaping UIScrollView.ValueChangedAction) -> some View {
 		self.modifier(OnListRefreshModifier(onValueChanged: onValueChanged))

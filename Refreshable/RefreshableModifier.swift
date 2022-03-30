@@ -8,23 +8,23 @@
 import SwiftUI
 
 
-fileprivate struct RefreshAction {
+struct RefreshAction {
 	
 	let action: () async -> Void
 	
-	public func callAsFunction() async {
+	func callAsFunction() async {
 		await action()
 	}
 }
 
 
-fileprivate struct RefreshActionKey: EnvironmentKey {
+struct RefreshActionKey: EnvironmentKey {
 	
-	public static let defaultValue: RefreshAction? = nil
+	static let defaultValue: RefreshAction? = nil
 }
 
 
-fileprivate extension EnvironmentValues {
+extension EnvironmentValues {
 	
 	var refresh: RefreshAction? {
 		get { self[RefreshActionKey.self] }
@@ -33,11 +33,11 @@ fileprivate extension EnvironmentValues {
 }
 
 
-fileprivate struct RefreshableModifier: ViewModifier {
+struct RefreshableModifier: ViewModifier {
 	
 	let action: () async -> Void
 	
-	public func body(content: Content) -> some View {
+	func body(content: Content) -> some View {
 		content
 			.environment(\.refresh, RefreshAction(action: action))
 			.onRefresh { refreshControl in
