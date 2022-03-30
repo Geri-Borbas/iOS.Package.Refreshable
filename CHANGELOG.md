@@ -1,8 +1,9 @@
 # Changelog
 
-* 0.0.3 - 0.0.5
+* 0.0.3 - 0.0.6
 
 	+ Added sources
+	+ Resolved visibility
 	+ Added dependencies
 	+ Recreated scheme
 

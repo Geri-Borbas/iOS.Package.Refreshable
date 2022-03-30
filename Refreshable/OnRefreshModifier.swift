@@ -26,7 +26,7 @@ extension UIScrollView {
 		}
 	}
 	
-	func onRefresh(_ onValueChanged: @escaping ValueChangedAction) {
+	public func onRefresh(_ onValueChanged: @escaping ValueChangedAction) {
 		if refreshControl == nil {
 			let refreshControl = UIRefreshControl()
 			refreshControl.addTarget(
