@@ -16,6 +16,7 @@ let package = Package(
     ],
     dependencies: [
 		.package(
+			name: "Introspect",
 			url: "https://github.com/siteline/SwiftUI-Introspect.git",
 			.branch("master")
 		)
@@ -23,7 +24,7 @@ let package = Package(
     targets: [
         .target(
             name: "Refreshable",
-//            dependencies: ["Introspect"],
+            dependencies: ["Introspect"],
 			path: "Refreshable"
 		)
     ]
